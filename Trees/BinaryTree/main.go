@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// Original tree from Wikipedia article
 	tree := BinaryTree[rune]{
@@ -45,4 +47,13 @@ func main() {
 	tree.DepthFirstSearch(traversePreorder)
 	tree.DepthFirstSearch(traverseInorder)
 	tree.DepthFirstSearch(traversePostorder)
+
+	fmt.Println(binarySearch[rune](tree.Head, 'E'))
+	fmt.Println(binarySearch[rune](tree.Head, 'S'))
+	fmt.Println(binarySearch[rune](tree.Head, 'F'))
+	fmt.Println(binarySearch[rune](tree.Head, 'X'))
+
+	binaryInsert[rune](tree.Head, 'K')
+	binaryInsert[rune](tree.Head, 'J')
+	tree.DepthFirstSearch(traverseInorder)
 }

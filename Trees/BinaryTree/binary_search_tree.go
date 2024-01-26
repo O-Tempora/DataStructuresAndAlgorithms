@@ -16,3 +16,19 @@ func binarySearch[T constraints.Ordered](head *Node[T], value T) (res *Node[T]) 
 	}
 	return nil
 }
+
+func binaryInsert[T constraints.Ordered](head *Node[T], value T) *Node[T] {
+	if head == nil {
+		return &Node[T]{
+			Left:  nil,
+			Right: nil,
+			Data:  value,
+		}
+	}
+	if value < head.Data {
+		head.Left = binaryInsert(head.Left, value)
+	} else if value > head.Data {
+		head.Right = binaryInsert(head.Right, value)
+	}
+	return head
+}
