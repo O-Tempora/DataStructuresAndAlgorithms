@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	// Original tree from Wikipedia articl
+	// Original tree from Wikipedia article
 	tree := BinaryTree[rune]{
 		Head: &Node[rune]{
 			Data: 'F',

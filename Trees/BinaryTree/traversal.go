@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"golang.org/x/exp/constraints"
+)
 
 func (t *BinaryTree[T]) DepthFirstSearch(searchFunc func(*Node[T])) {
 	if t.Head == nil {
@@ -10,7 +14,7 @@ func (t *BinaryTree[T]) DepthFirstSearch(searchFunc func(*Node[T])) {
 	fmt.Println()
 }
 
-func traversePreorder[T comparable](node *Node[T]) {
+func traversePreorder[T constraints.Ordered](node *Node[T]) {
 	if node == nil {
 		return
 	}
@@ -19,7 +23,7 @@ func traversePreorder[T comparable](node *Node[T]) {
 	traversePreorder(node.Right)
 }
 
-func traverseInorder[T comparable](node *Node[T]) {
+func traverseInorder[T constraints.Ordered](node *Node[T]) {
 	if node == nil {
 		return
 	}
@@ -28,7 +32,7 @@ func traverseInorder[T comparable](node *Node[T]) {
 	traverseInorder(node.Right)
 }
 
-func traversePostorder[T comparable](node *Node[T]) {
+func traversePostorder[T constraints.Ordered](node *Node[T]) {
 	if node == nil {
 		return
 	}
