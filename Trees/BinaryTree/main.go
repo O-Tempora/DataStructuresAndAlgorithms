@@ -56,4 +56,8 @@ func main() {
 	binaryInsert[rune](tree.Head, 'K')
 	binaryInsert[rune](tree.Head, 'J')
 	tree.DepthFirstSearch(traverseInorder)
+
+	fmt.Println(binaryDelete[rune](tree.Head, 'S'))
+	fmt.Println(binaryDelete[rune](tree.Head, 'A'))
+	tree.DepthFirstSearch(traverseInorder)
 }

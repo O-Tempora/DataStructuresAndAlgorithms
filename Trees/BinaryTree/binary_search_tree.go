@@ -32,3 +32,34 @@ func binaryInsert[T constraints.Ordered](head *Node[T], value T) *Node[T] {
 	}
 	return head
 }
+
+func binaryDelete[T constraints.Ordered](head *Node[T], value T) *Node[T] {
+	if head == nil {
+		return nil
+	}
+	if value < head.Data {
+		head.Left = binaryDelete(head.Left, value)
+	} else if value > head.Data {
+		head.Right = binaryDelete(head.Right, value)
+	} else {
+		var tmp *Node[T]
+		switch {
+		case head.Left == nil:
+			tmp = head.Right
+			head = nil
+			return tmp
+		case head.Right == nil:
+			tmp = head.Left
+			head = nil
+			return tmp
+		default:
+			tmp = head.Right
+			for tmp != nil && tmp.Left != nil {
+				tmp = tmp.Left
+			}
+			head.Data = value
+			head.Right = binaryDelete(head.Right, tmp.Data)
+		}
+	}
+	return head
+}
