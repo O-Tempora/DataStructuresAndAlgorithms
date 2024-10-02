@@ -6,9 +6,13 @@ func main() {
 	var (
 		w        = Writer{}
 		content  = []byte("write this into file\n")
-		filepath = "./out"
+		filepath = "./res.out"
 	)
-	if err := w.WriteAdapted(content, filepath); err != nil {
+	if err := write(w, content, filepath); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func write(a Adapter, v []byte, p string) error {
+	return a.WriteAdapted(v, p)
 }
